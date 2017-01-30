@@ -30,4 +30,4 @@ def webhook():
 
 if __name__ == '__main__':
     #l = read_config(section="facebook")["verify_token"]
-    app.run(debug=True)
+    app.run(debug=True, host= '0.0.0.0')
