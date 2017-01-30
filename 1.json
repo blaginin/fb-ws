@@ -1,0 +1,387 @@
+{
+ "kind": "customsearch#search",
+ "url": {
+  "type": "application/json",
+  "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&cref={cref?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+ },
+ "queries": {
+  "request": [
+   {
+    "title": "Google Custom Search - helloworld",
+    "totalResults": "316000",
+    "searchTerms": "helloworld",
+    "count": 10,
+    "startIndex": 1,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "001696207075283552062:93an9hg1id4"
+   }
+  ],
+  "nextPage": [
+   {
+    "title": "Google Custom Search - helloworld",
+    "totalResults": "316000",
+    "searchTerms": "helloworld",
+    "count": 10,
+    "startIndex": 11,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "001696207075283552062:93an9hg1id4"
+   }
+  ]
+ },
+ "context": {
+  "title": "mt_test"
+ },
+ "searchInformation": {
+  "searchTime": 0.409738,
+  "formattedSearchTime": "0,41",
+  "totalResults": "316000",
+  "formattedTotalResults": "316 000"
+ },
+ "items":
+ [
+  {
+   "kind": "customsearch#result",
+   "title": "HELLOWORLD.RU",
+   "htmlTitle": "\u003cb\u003eHELLOWORLD\u003c/b\u003e.RU",
+   "link": "http://helloworld.ru/",
+   "displayLink": "helloworld.ru",
+   "snippet": "WWW.HELLOWORLD.RU - Документация, книги, описания, советы, форум по \nпрограммированию. Для начинающих и опытных программистов.",
+   "htmlSnippet": "WWW.\u003cb\u003eHELLOWORLD\u003c/b\u003e.RU - Документация, книги, описания, советы, форум по \u003cbr\u003e\nпрограммированию. Для начинающих и опытных программистов.",
+   "cacheId": "sVWVtBKmRE8J",
+   "formattedUrl": "helloworld.ru/",
+   "htmlFormattedUrl": "\u003cb\u003ehelloworld\u003c/b\u003e.ru/"
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Hello, world! — Википедия",
+   "htmlTitle": "\u003cb\u003eHello, world\u003c/b\u003e! — Википедия",
+   "link": "http://wiki.bks-tv.ru/wiki/Hello,_world!",
+   "displayLink": "wiki.bks-tv.ru",
+   "snippet": "«Hello, world!» — программа, результатом работы которой является вывод \nна экран или иное устройство фразы «Hello, world!» (в дословном переводе\n ...",
+   "htmlSnippet": "«\u003cb\u003eHello, world\u003c/b\u003e!» — программа, результатом работы которой является вывод \u003cbr\u003e\nна экран или иное устройство фразы «\u003cb\u003eHello, world\u003c/b\u003e!» (в дословном переводе\u003cbr\u003e\n&nbsp;...",
+   "cacheId": "9TObvCyAQJcJ",
+   "formattedUrl": "wiki.bks-tv.ru/wiki/Hello,_world!",
+   "htmlFormattedUrl": "wiki.bks-tv.ru/wiki/Hello,_world!",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "176",
+      "height": "199",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeNhUV0zd3CZTN0qtxyTvLoMxaGkOHxFBHZqopG4VNP9DWYRY1sV-d3c4"
+     }
+    ],
+    "metatags": [
+     {
+      "referrer": "origin-when-cross-origin"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Hello_World_Perl_GTk2.png/220px-Hello_World_Perl_GTk2.png"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Hello World Enterprise Edition · GitHub",
+   "htmlTitle": "\u003cb\u003eHello World\u003c/b\u003e Enterprise Edition · GitHub",
+   "link": "http://1c.ruboard.ru/redirect.php?url=aHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20vbG9semJhbGxzLzIxNTJiYzBmMzFlZTAyODZiNzIy",
+   "displayLink": "1c.ruboard.ru",
+   "snippet": "import java.io.OutputStream;. import java.io.PrintStream;. public class HelloWorld\n{. private static HelloWorld instance;. public static void main(String[] args){.",
+   "htmlSnippet": "import java.io.OutputStream;. import java.io.PrintStream;. public class \u003cb\u003eHelloWorld\u003c/b\u003e\u003cbr\u003e\n{. private static \u003cb\u003eHelloWorld\u003c/b\u003e instance;. public static void main(String[] args){.",
+   "cacheId": "8oLBfILFYywJ",
+   "formattedUrl": "1c.ruboard.ru/redirect.php?url...",
+   "htmlFormattedUrl": "1c.ruboard.ru/redirect.php?url...",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "225",
+      "height": "225",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSutD5uAH9R-_-GunVKdm4hK5mNosmC9ihh_y31UNPTlJSRf5D7O9Y3nKg"
+     }
+    ],
+    "code": [
+     {
+      "author": "lolzballs",
+      "name": "HelloWorld.java",
+      "about": "Hello World Enterprise Edition",
+      "text": "import java.io.FileDescriptor;import java.io.FileOutputStream;import java.io.IOException;import java.io.OutputStream;import java.io.PrintStream; public class HelloWorld{ private static HelloWorld..."
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=device-width",
+      "fb:app_id": "1401488693436528",
+      "twitter:image:src": "https://avatars3.githubusercontent.com/u/1562553?v=3&s=400",
+      "twitter:site": "@github",
+      "twitter:card": "summary",
+      "twitter:title": "Hello World Enterprise Edition",
+      "twitter:description": "Hello World Enterprise Edition",
+      "og:image": "https://avatars3.githubusercontent.com/u/1562553?v=3&s=400",
+      "og:site_name": "Gist",
+      "og:type": "object",
+      "og:title": "Hello World Enterprise Edition",
+      "og:url": "https://gist.github.com/lolzballs/2152bc0f31ee0286b722",
+      "og:description": "Hello World Enterprise Edition",
+      "browser-stats-url": "https://api.github.com/_private/browser/stats",
+      "browser-errors-url": "https://api.github.com/_private/browser/errors",
+      "pjax-timeout": "1000",
+      "request-id": "42F94248:4214:2775112:585118C5",
+      "msapplication-tileimage": "/windows-tile.png",
+      "msapplication-tilecolor": "#ffffff",
+      "google-analytics": "UA-3769691-4",
+      "octolytics-host": "collector.githubapp.com",
+      "octolytics-app-id": "gist",
+      "octolytics-dimension-request_id": "42F94248:4214:2775112:585118C5",
+      "analytics-location": "/\u003cuser-name\u003e/\u003cgist-id\u003e",
+      "dimension1": "Logged Out",
+      "octolytics-dimension-public": "true",
+      "octolytics-dimension-gist_id": "20609622",
+      "octolytics-dimension-gist_name": "2152bc0f31ee0286b722",
+      "octolytics-dimension-anonymous": "false",
+      "octolytics-dimension-owner_id": "1562553",
+      "octolytics-dimension-owner_login": "lolzballs",
+      "octolytics-dimension-forked": "false",
+      "dimension5": "public",
+      "dimension6": "owned",
+      "dimension7": "java",
+      "hostname": "gist.github.com",
+      "expected-hostname": "gist.github.com",
+      "js-proxy-site-detection-payload": "NzZkYjViYWMxNDc4YzRhNDc5MWU4MjBiYzY4MWI1YTNlZmM2MDliNDkzZDNmZjQ1Y2Q4NjNkZmFjZDhmNzVkMnx7InJlbW90ZV9hZGRyZXNzIjoiNjYuMjQ5LjY2LjcyIiwicmVxdWVzdF9pZCI6IjQyRjk0MjQ4OjQyMTQ6Mjc3NTExMjo1ODUxMThDNSIsInRpbWVzdGFtcCI6MTQ4MTcwOTc2NiwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==",
+      "html-safe-nonce": "141bacf519ccbabfbab2d7ea64c14a15cf5f411f",
+      "form-nonce": "512effc7a48dc59600e900212539b2562e9717f0"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars3.githubusercontent.com/u/1562553?v=3&s=400"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Hello, world!",
+   "htmlTitle": "\u003cb\u003eHello, world\u003c/b\u003e!",
+   "link": "http://www.investor.ru/redirect/aHR0cDovL3d3dy5pbnZlc3Rvci5ydS9yZWRpcmVjdC9hSFIwY0RvdkwyaGxiR3h2TG5jd2NqRmtMbTVsZEM4PQ==",
+   "displayLink": "www.investor.ru",
+   "snippet": "Hello, world | a visual code for google earth. home | description | exhibition | \npress | contact. Bild. random images. Related Sites. kmz · images · weblog.",
+   "htmlSnippet": "\u003cb\u003eHello, world\u003c/b\u003e | a visual code for google earth. home | description | exhibition | \u003cbr\u003e\npress | contact. Bild. random images. Related Sites. kmz &middot; images &middot; weblog.",
+   "cacheId": "MtkYMdyGLEcJ",
+   "formattedUrl": "www.investor.ru/.../ aHR0cDovL3d3dy5pbnZlc3Rvci5ydS9yZWRpcmVjd...",
+   "htmlFormattedUrl": "www.investor.ru/.../ aHR0cDovL3d3dy5pbnZlc3Rvci5ydS9yZWRpcmVjd...",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "277",
+      "height": "182",
+      "src": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSaPq0BqvbTbNv_IpwR21U_WQroYQXhoVqoyQ1KoUiZkZk2DTzdyGBG7BVS"
+     }
+    ],
+    "metatags": [
+     {
+      "hello, world": "Hello, world! project Page",
+      "author": "Bernd Hopfengaertner"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "http://hello.w0r1d.net/bilder/a_v_code.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Викторина «Hello World» — угадай язык программирования ...",
+   "htmlTitle": "Викторина «\u003cb\u003eHello World\u003c/b\u003e» — угадай язык программирования ...",
+   "link": "https://tproger.ru/quiz/hello-world/",
+   "displayLink": "tproger.ru",
+   "snippet": "19 фев 2016 ... В этой викторине вам предстоит угадывать язык, на котором написана \nпрограмма, выводящая на экран «Hello World».",
+   "htmlSnippet": "19 фев 2016 \u003cb\u003e...\u003c/b\u003e В этой викторине вам предстоит угадывать язык, на котором написана \u003cbr\u003e\nпрограмма, выводящая на экран «\u003cb\u003eHello World\u003c/b\u003e».",
+   "cacheId": "ZwoLEwlBgjwJ",
+   "formattedUrl": "https://tproger.ru/quiz/hello-world/",
+   "htmlFormattedUrl": "https://tproger.ru/quiz/\u003cb\u003ehello-world\u003c/b\u003e/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "379",
+      "height": "133",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgUkTMNXCIbUkMTL1V7lurV8wN4oI0uCEY5vgD76eP8qzq0p0nRtDkEkQ"
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=device-width, initial-scale=1",
+      "onesignal": "wordpress-plugin",
+      "og:site_name": "Типичный программист",
+      "og:title": "Викторина «Hello World» — угадай язык программирования",
+      "og:image": "https://tproger2.azureedge.net/wp-content/uploads/2016/02/hello.png",
+      "og:description": "В этой викторине вам предстоит угадывать язык, на котором написана программа, выводящая на экран «Hello World».",
+      "og:type": "article",
+      "og:url": "https://tproger.ru/quiz/hello-world/"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://tproger2.azureedge.net/wp-content/uploads/2016/02/hello.png"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Пишем Hello World для HoloLens / Блог компании Microsoft ...",
+   "htmlTitle": "Пишем \u003cb\u003eHello World\u003c/b\u003e для HoloLens / Блог компании Microsoft ...",
+   "link": "https://habrahabr.ru/company/microsoft/blog/310446/",
+   "displayLink": "habrahabr.ru",
+   "snippet": "20 сен 2016 ... Теперь у нас есть все необходимое для работы, давайте начнем делать \nнаше hello world приложение. Запустите Unity Hololens ...",
+   "htmlSnippet": "20 сен 2016 \u003cb\u003e...\u003c/b\u003e Теперь у нас есть все необходимое для работы, давайте начнем делать \u003cbr\u003e\nнаше \u003cb\u003ehello world\u003c/b\u003e приложение. Запустите Unity Hololens&nbsp;...",
+   "cacheId": "t5xk8bqll3EJ",
+   "formattedUrl": "https://habrahabr.ru/company/microsoft/blog/310446/",
+   "htmlFormattedUrl": "https://habrahabr.ru/company/microsoft/blog/310446/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "329",
+      "height": "153",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQT3eqJunVvvAhYL8AnODjCCmMnKAkucBJSsSd5FfDDi4mSBoQTI5z0Hsc"
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=1024",
+      "fb:app_id": "444736788986613",
+      "og:type": "article",
+      "og:url": "https://habrahabr.ru/company/microsoft/blog/310446/",
+      "og:title": "Пишем Hello World для HoloLens",
+      "og:image": "https://habrastorage.org/files/3f7/9d9/907/3f79d9907e8b4afc80f8b344dbdc8532.png",
+      "og:description": "Спешим поделиться уникальным материалом подготовленным специально для нашего блога Глебом Захаровым, HoloLens Lead компании Zengalt – пошаговая инструкция по...",
+      "twitter:card": "summary",
+      "twitter:site": "@habrahabr",
+      "al:android:url": "habrahabr://post/310446",
+      "al:android:app_name": "Habrahabr",
+      "al:android:package": "ru.habrahabr",
+      "al:windows_phone:url": "habrahabr://post/310446",
+      "al:windows_phone:app_name": "Habrahabr",
+      "al:windows_phone:app_id": "460a6bd6-8955-470f-935e-9ea1726a6060",
+      "yandex-verification": "71593b225aeafc4e",
+      "referrer": "unsafe-url",
+      "pocket-site-verification": "ed24b2b9721edf0a282c5b4a3232c4",
+      "apple-mobile-web-app-title": "Хабрахабр",
+      "application-name": "Хабрахабр",
+      "msapplication-tilecolor": "#FFFFFF",
+      "msapplication-tileimage": "mstile-144x144.png"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://habrastorage.org/files/3f7/9d9/907/3f79d9907e8b4afc80f8b344dbdc8532.png"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Hello World!",
+   "htmlTitle": "\u003cb\u003eHello World\u003c/b\u003e!",
+   "link": "http://jcenter.narod.ru/www0.4/articles/java_firstproga/HelloWorld.java",
+   "displayLink": "jcenter.narod.ru",
+   "snippet": "HelloWorld.java */ public class HelloWorld { public static void main(String[] args) { \nSystem.out.println(\"Hello World!\"); } }",
+   "htmlSnippet": "\u003cb\u003eHelloWorld\u003c/b\u003e.java */ public class \u003cb\u003eHelloWorld\u003c/b\u003e { public static void main(String[] args) { \u003cbr\u003e\nSystem.out.println(&quot;\u003cb\u003eHello World\u003c/b\u003e!&quot;); } }",
+   "cacheId": "mJ_2EX1iDJEJ",
+   "mime": "text/plain",
+   "formattedUrl": "jcenter.narod.ru/www0.4/articles/.../HelloWorld.java",
+   "htmlFormattedUrl": "jcenter.narod.ru/www0.4/articles/.../\u003cb\u003eHelloWorld\u003c/b\u003e.java"
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Пишем умный контракт на Solidity. Часть 1 — установка и «Hello ...",
+   "htmlTitle": "Пишем умный контракт на Solidity. Часть 1 — установка и «\u003cb\u003eHello\u003c/b\u003e ...",
+   "link": "https://habrahabr.ru/post/312008/",
+   "displayLink": "habrahabr.ru",
+   "snippet": "7 окт 2016 ... Часть 1 — установка и «Hello world» из песочницы tutorial. \nДецентрализованные сети. Люди, интересующиеся темой блокчейна, уже \nне ...",
+   "htmlSnippet": "7 окт 2016 \u003cb\u003e...\u003c/b\u003e Часть 1 — установка и «\u003cb\u003eHello world\u003c/b\u003e» из песочницы tutorial. \u003cbr\u003e\nДецентрализованные сети. Люди, интересующиеся темой блокчейна, уже \u003cbr\u003e\nне&nbsp;...",
+   "cacheId": "DQ-zMqmUJpoJ",
+   "formattedUrl": "https://habrahabr.ru/post/312008/",
+   "htmlFormattedUrl": "https://habrahabr.ru/post/312008/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "248",
+      "height": "203",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTIffNG1HtYvjIBdGOK_WpvKVrxEwGJaaCLVE3cpHseQn3z6PeMjypVKvcP"
+     }
+    ],
+    "metatags": [
+     {
+      "viewport": "width=1024",
+      "fb:app_id": "444736788986613",
+      "og:type": "article",
+      "og:url": "https://habrahabr.ru/post/312008/",
+      "og:title": "Пишем умный контракт на Solidity. Часть 1 — установка и «Hello world»",
+      "og:image": "https://habrastorage.org/getpro/habr/post_images/0ad/190/b95/0ad190b953259cc749f8532a2885677d.png",
+      "og:description": "Люди, интересующиеся темой блокчейна, уже не раз слышали о проекте российско-канадского программиста Виталика Бутерина — Ethereum, а в вместе с ним и о так...",
+      "twitter:card": "summary",
+      "twitter:site": "@habrahabr",
+      "al:android:url": "habrahabr://post/312008",
+      "al:android:app_name": "Habrahabr",
+      "al:android:package": "ru.habrahabr",
+      "al:windows_phone:url": "habrahabr://post/312008",
+      "al:windows_phone:app_name": "Habrahabr",
+      "al:windows_phone:app_id": "460a6bd6-8955-470f-935e-9ea1726a6060",
+      "yandex-verification": "71593b225aeafc4e",
+      "referrer": "unsafe-url",
+      "pocket-site-verification": "ed24b2b9721edf0a282c5b4a3232c4",
+      "apple-mobile-web-app-title": "Хабрахабр",
+      "application-name": "Хабрахабр",
+      "msapplication-tilecolor": "#FFFFFF",
+      "msapplication-tileimage": "mstile-144x144.png"
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://habrastorage.org/getpro/habr/post_images/0ad/190/b95/0ad190b953259cc749f8532a2885677d.png"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "USD Documentation : Hello World Redux - Using Generic Prims",
+   "htmlTitle": "USD Documentation : \u003cb\u003eHello World\u003c/b\u003e Redux - Using Generic Prims",
+   "link": "https://pixar.ru/usd/docs/Hello-World-Redux---Using-Generic-Prims.html",
+   "displayLink": "pixar.ru",
+   "snippet": "In this tutorial, we revisit our Hello World! example, but this example passes in \nhard-coded typenames 'Xform' and 'Sphere', which correspond to the typenames\n ...",
+   "htmlSnippet": "In this tutorial, we revisit our \u003cb\u003eHello World\u003c/b\u003e! example, but this example passes in \u003cbr\u003e\nhard-coded typenames &#39;Xform&#39; and &#39;Sphere&#39;, which correspond to the typenames\u003cbr\u003e\n&nbsp;...",
+   "cacheId": "APCIHENBNMUJ",
+   "formattedUrl": "https://pixar.ru/.../Hello-World-Redux---Using-Generic-Prims.html",
+   "htmlFormattedUrl": "https://pixar.ru/.../\u003cb\u003eHello-World\u003c/b\u003e-Redux---Using-Generic-Prims.html"
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "The Real \"Hello World\"",
+   "htmlTitle": "The Real &quot;\u003cb\u003eHello World\u003c/b\u003e&quot;",
+   "link": "http://citforum.ru/programming/digest/realhello.shtml",
+   "displayLink": "citforum.ru",
+   "snippet": "А что если написать такой \"Hello World\", для которого ничего не надо. \nВставляем дискетку в компьютер, загружаемся с нее и ...\"Hello World\". Можно \nдаже ...",
+   "htmlSnippet": "А что если написать такой &quot;\u003cb\u003eHello World\u003c/b\u003e&quot;, для которого ничего не надо. \u003cbr\u003e\nВставляем дискетку в компьютер, загружаемся с нее и ...&quot;\u003cb\u003eHello World\u003c/b\u003e&quot;. Можно \u003cbr\u003e\nдаже&nbsp;...",
+   "cacheId": "Yw5_ILmJ4ewJ",
+   "formattedUrl": "citforum.ru/programming/digest/realhello.shtml",
+   "htmlFormattedUrl": "citforum.ru/programming/digest/realhello.shtml",
+   "pagemap": {
+    "metatags": [
+     {
+      "document-state": "Static"
+     }
+    ]
+   }
+  }
+ ]
+}
+
