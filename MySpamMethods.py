@@ -971,7 +971,7 @@ def spamsample():
 
         person_id_list = bot_db.getsubs(i)
 
-        #person_id_list = ['1237804452954697']
+        #person_id_list = ['1301649959857015']
 
         for person_id in person_id_list:
             for article in article_list:
@@ -992,8 +992,8 @@ def getarticles(url):
 
         for category in item.findall('category'):
             if category.text.upper() == u'ЗНАК ЗОДИАКА' or category.text.upper() == u"ГОРОСКОП":
-                date = datetime.strptime(item.find("pubDate").text[5:25], '%d %b %Y %H:%M:%S')
-                if date.date() == datetime.now().date():
+                date = datetime.strptime(item.find("pubDate").text[6:25], '%d %b %Y %H:%M:%S')
+                if date.date() == datetime.now().date():# or True:
 
                     desc = item.find('description').text
 
@@ -1030,4 +1030,5 @@ def getImage(desc):
 
 if __name__ == '__main__':
    # app.run(debug=True)
-   spamsample()
+    l = getarticles("http://podruga.top/rss")
+    print(len(l))

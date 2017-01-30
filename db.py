@@ -1,10 +1,11 @@
 
 from datetime import date, datetime, time
-import mysql.connector
-from mysql.connector import Error
+
+import sqlite3
+
 import Logger
 from python_mysql_dbconfig import read_config
-from user import user
+# from user import user
 
 class db:
 
@@ -12,21 +13,21 @@ class db:
         try:
 
             db = read_config()
-            self.conn = mysql.connector.connect(**db)
+            self.conn = sqlite3.connect('database.sqlite')
+            # self.conn = mysql.connector.connect(**db)
             self.cursor = self.conn.cursor()
 
         except Error as e:
             print(e)
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        self.cursor.close()
-        self.conn.close()
+
 
     def getsubs(self, typeid):
 
+
             hour = datetime.now().hour
 
-            datetimetocompare = time = datetime(2000, 1 , 1,hour,0,0)
+            datetimetocompare = time = datetime(2000,1,1,hour,0,0)
 
             query  = "SELECT UserID FROM Subscritions where enabled=1 and SubTime ='" + datetimetocompare.strftime('%Y-%m-%d %H:%M:%S') +"' and SubTypeId = " + str(typeid)
 
@@ -70,7 +71,7 @@ class db:
         except Error as error:
             Logger.log(error)
 
-    def createupdateuser(self,  fb_ID, WaitingForCommand, FirstName = None, LastName = None, TimeZone = None, LanguageId = 1, ):
+    def createuser(self, fb_ID, FirstName = None, LastName = None, TimeZone = 3, LanguageId = 1):
 
         self.cursor.execute("SELECT * FROM users where ID =" + fb_ID)
         self.cursor.fetchone()
@@ -78,32 +79,14 @@ class db:
         if self.cursor.rowcount <= 0:
             query = "INSERT INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( %s, %s, %s, %s, %s)"
             args = (fb_ID, FirstName, LastName, TimeZone, LanguageId )
-        else:
+            try:
 
-            query = """ UPDATE users
-                                       SET FirstName = %s,
-                                           LastName = %s,
-                                           TimeZone = %s,
-                                           LanguageID = %s,
-                                           WaitingForCommand = %s
-                                       WHERE id = %s """
-            args = ( FirstName, LastName, TimeZone, LanguageId, WaitingForCommand, fb_ID)
-        try:
+                self.cursor.execute(query, args)
+                self.conn.commit()
 
-            self.cursor.execute(query, args)
-            self.conn.commit()
-
-        except Error as error:
-            Logger.log(error)
-
-    def getuserinfo(self, fb_ID):
-        query = "SELECT * FROM users where ID =" + fb_ID
-        self.cursor.execute(query)
-        sqluser = self.cursor.fetchone()
-        if self.cursor.rowcount > 0:
-            return user(fb_id=fb_ID, FirstName=sqluser[1], LastName=sqluser[2], TimeZone=sqluser[3], LanguageID=sqluser[4], WaitingForCommand=sqluser[5])
-        else:
-            return None
+            except Error as error:
+                Logger.log(error)
+        return TimeZone
 
     def testconn(self):
         self.cursor.execute("SELECT * FROM users")
@@ -120,6 +103,8 @@ class db:
 
 if __name__ == '__main__':
     a = db()
-    #a.testconn()
-    user = a.getuserinfo('100006714724497')
-    print (user)
+    a.testconn()
+    #a.createuser('100006714724497','Ilya','Kuskov')
+    #a.createupdatesub('100006714724497',1,12,1)
+    #for i in a.getsubs(1):
+    #    print (i)

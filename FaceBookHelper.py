@@ -6,12 +6,8 @@ import Logger
 from db import db
 from flask import Flask, request
 from python_mysql_dbconfig import read_config
-import GoogleHelper
-from user import user
 
 
-reload(sys)
-sys.setdefaultencoding('utf8')
 
 time_string = "TIME"
 PAGE_ACCESS_TOKEN = read_config(section="facebook")["page_access_token"]
@@ -19,7 +15,6 @@ PAGE_ACCESS_TOKEN = read_config(section="facebook")["page_access_token"]
 def webhook_handler():
     data = request.get_json()
     #Logger.log(data)  # you may not want to log every incoming message in production, but it's good for testing
-
 
     if data["object"] == "page":
 
@@ -29,11 +24,6 @@ def webhook_handler():
 
                 sender_id = messaging_event["sender"]["id"]  # the facebook ID of the person sending you the message
 
-                bot_db = db()
-                user = bot_db.getuserinfo(fb_ID=sender_id)
-                if user is None:
-                    bot_db.createupdateuser(fb_ID=sender_id, WaitingForCommand=1)
-
                 if messaging_event.get("message"):  # someone sent us a message
 
                     # recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
@@ -41,67 +31,18 @@ def webhook_handler():
                         message_text = ''
                         if "text" in messaging_event["message"]:  # the message's text
                             message_text = messaging_event["message"]["text"]
+                    # send_message(sender_id, "press the buttons")
+                        if (
+                              message_text.upper().find("START")>=0
+                           or message_text.upper().find("HI")>=0
+                           or message_text.upper().find("HELLO")>=0
+                           or message_text.upper().find("МЕНЮ")>= 0
+                           or message_text.upper().find("ПРИВ")>=0
+                           or message_text.upper().find("ПИСК") >= 0
+                           or message_text.upper().find("ГОРОСКОП") >= 0
 
-                        if user.WaitingForCommand == 0:
-
-
-                        # send_message(sender_id, "press the buttons")
-
-                            if (
-                                  message_text.upper().find("START")>=0
-                               or message_text.upper().find("HI")>=0
-                               or message_text.upper().find("НАЧАТЬ")>=0
-                               or message_text.upper().find("HELLO")>=0
-                               or message_text.upper().find("МЕНЮ")>= 0
-                               or message_text.upper().find("ПРИВ")>=0
-                               or message_text.upper().find("ПИСК") >= 0
-                               or message_text.upper().find("ГОРОСКОП") >= 0
-
-                            ):
-                                if user.WaitingForCommand == 1:
-                                   getusertimezone(sender_id)
-                                else:
-                                    common_main_menu(sender_id)
-                        elif user.WaitingForCommand == 1:
-                            if message_text != '':
-                                try:
-                                    timezone = int(message_text)
-                                    bot_db.createupdateuser(fb_ID=sender_id,
-                                                        FirstName=user.FirstName,
-                                                        LastName=user.LastName,
-                                                        TimeZone=timezone,
-                                                        LanguageId=user.LanguageID,
-                                                        WaitingForCommand=0)
-                                    send_message(sender_id, u'Информация записана')
-                                    common_main_menu(sender_id)
-                                except Exception as e:
-                                    send_message(sender_id, e.message)
-                                    Logger.log(e.message)
-                        elif user.WaitingForCommand == 2:
-                            try:
-                                url = read_config(section="google")["url"]
-                                results = GoogleHelper.getresult(url, message_text)
-                                if len(results) > 0:
-                                    for result in results:
-                                        send_message(sender_id, result["title"] + result["link"])
-                                    #send_list(sender_id, results)
-                                    bot_db.createupdateuser(fb_ID=sender_id,
-                                                        FirstName=user.FirstName,
-                                                        LastName=user.LastName,
-                                                        TimeZone=user.TimeZone,
-                                                        LanguageId=user.LanguageID,
-                                                        WaitingForCommand=0)
-                                else:
-                                    send_message(sender_id, "Ничего не найдено")
-                                    bot_db.createupdateuser(fb_ID=sender_id,
-                                            FirstName=user.FirstName,
-                                            LastName=user.LastName,
-                                            TimeZone=user.TimeZone,
-                                            LanguageId=user.LanguageID,
-                                            WaitingForCommand=0)
-                            except Exception as e:
-                                send_message(sender_id, e.message)
-                                Logger.log(e.message)
+                        ):
+                            common_main_menu(sender_id)
                         else:
                             send_message(sender_id, "Спасибо за отзыв :)")
                         # send_image(sender_id, "http://xiostorage.com/wp-content/uploads/2015/10/test.png")
@@ -121,33 +62,16 @@ def webhook_handler():
                     command = messaging_event["postback"]["payload"]
                     if command == "DEVELOPER_DEFINED_SUBSCRIBE":
                         subscribe_time_menu(sender_id , '1')
-                    elif command == "DEVELOPER_DEFINED_SETTINGS":
-                        bot_db.createupdateuser(fb_ID=sender_id, WaitingForCommand=1,
-                                                FirstName=user.FirstName,
-                                                LastName=user.LastName,
-                                                LanguageId=user.LanguageID,
-                                                )
-                        getusertimezone(sender_id)
-                    elif command == "DEVELOPER_DEFINED_SEARCH":
-                        bot_db.createupdateuser(fb_ID=sender_id, WaitingForCommand=2,
-                                                FirstName=user.FirstName,
-                                                LastName=user.LastName,
-                                                LanguageId=user.LanguageID,
-                                                )
-                        send_message(sender_id, "Введите поисковый запрос")
                     elif command == "DEVELOPER_DEFINED_UNSUBSCRIBE":
 
+                        bot_db = db()
                         bot_db.createupdatesub(fb_ID=sender_id,subtype=1, hour=0, enable=0)
                         send_message(sender_id, "Подписка отменена :( Возвращайтесь")
 
                     elif command.upper().find(time_string) == 0:
-                        TimeZone = user.TimeZone
-                        hours = int(command.split(';')[1]) - TimeZone
-                        if hours < 0:
-                            hours = 24+hours
-                        elif hours >= 24:
-                            hours = hours - 24
-
+                        bot_db = db()
+                        utc = bot_db.createuser(sender_id)
+                        hours = int(command.split(';')[1]) - utc
                         bot_db.createupdatesub(fb_ID=sender_id,subtype=1, hour=hours, enable=1)
                         #.createupdatesub()
                         send_message(sender_id, "Ура! :) Подписка оформлена")
@@ -234,11 +158,6 @@ def common_main_menu(recipient_id):
                                         },
                                         {
                                             "type": "postback",
-                                            "title": "Настройки",
-                                            "payload": "DEVELOPER_DEFINED_SETTINGS"
-                                        },
-                                        {
-                                            "type": "postback",
                                             "title": "Отписаться",
                                             "payload": "DEVELOPER_DEFINED_UNSUBSCRIBE"
                                         },
@@ -270,11 +189,6 @@ def common_main_menu(recipient_id):
                                             "type": "web_url",
                                             "url": "http://podruga.top",
                                             "title": "О нас"
-                                        },
-                                        {
-                                            "type": "postback",
-                                            "title": "Настройки",
-                                            "payload": "DEVELOPER_DEFINED_SETTINGS"
                                         },
                                         {
                                             "type": "postback",
@@ -431,71 +345,3 @@ def send_articles_message(recipient_id, article):
           }
     })
     send_json(data, headers, params)
-
-
-def getusertimezone(sender_id):
-    send_message(sender_id, "Введите часовой свой часовой пояс, например +3 для Москвы")
-
-
-def send_list(recipient_id, results):
-
-    Logger.log("sending results to {recipient}".format(recipient=recipient_id))
-
-    params = {
-        "access_token": PAGE_ACCESS_TOKEN
-    }
-    headers = {
-        "Content-Type": "application/json"
-    }
-
-    data1 = {}
-    data1["recipient"]["id"] =  recipient_id
-
-    array = []
-
-    for i in results:
-        pass
-    # array.append(x["title"= i[]] )
-
-    data = json.dumps(data1)
-'''
-        "message": {
-            "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "list",
-                for i in results:
-                    "elements": [
-                        {
-                    "title": "Classic T-Shirt Collection",
-                    "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",
-                    "subtitle": "See all our colors",
-                    "default_action": {
-                        "type": "web_url",
-                        "url": "https://peterssendreceiveapp.ngrok.io/shop_collection",
-                        "messenger_extensions": true,
-                        "webview_height_ratio": "tall",
-                        "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                    },
-                    "buttons": [
-                        {
-                            "title": "View",
-                            "type": "web_url",
-                            "url": "https://peterssendreceiveapp.ngrok.io/collection",
-                            "messenger_extensions": true,
-                            "webview_height_ratio": "tall",
-                            "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
-                        }
-                    ]
-
-
-                        }
-                     ],
-        '''
-
-class list_item:
-    def __init__(self, title, subtitle, fallback_url):
-
-        self.title = title
-        self.subtitle = subtitle
-        self.fallback_url = fallback_url
