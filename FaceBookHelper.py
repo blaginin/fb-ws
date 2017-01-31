@@ -11,6 +11,22 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 
 
+
+def getImage(desc):
+
+    image_url = ""
+
+    search_string = '<img src="'
+
+    img_start_position = desc.find(search_string)
+    if img_start_position>0:
+        img_length = desc[img_start_position+len(search_string)+1:].find('class')
+        if img_length > 0:
+            image_url = desc[img_start_position:img_start_position+img_length+10].split('"')[1]
+
+    return image_url
+
+    
 time_string = "TIME"
 PAGE_ACCESS_TOKEN = read_config(section="facebook")["page_access_token"]
 
