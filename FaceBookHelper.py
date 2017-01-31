@@ -62,11 +62,17 @@ def webhook_handler():
                     command = messaging_event["postback"]["payload"]
                     if command == "DEVELOPER_DEFINED_SUBSCRIBE":
                         subscribe_time_menu(sender_id , '1')
+
+                    elif command == "DEVELOPER_DEFINED_LAST":
+                        send_articles_message(sender_id, fetch_last_news())
+
+
                     elif command == "DEVELOPER_DEFINED_UNSUBSCRIBE":
 
                         bot_db = db()
                         bot_db.createupdatesub(fb_ID=sender_id,subtype=1, hour=0, enable=0)
                         send_message(sender_id, "Подписка отменена :( Возвращайтесь")
+
 
                     elif command.upper().find(time_string) == 0:
                         bot_db = db()
@@ -79,6 +85,27 @@ def webhook_handler():
                         send_message(sender_id, command)
 
     return "ok", 200
+
+
+def fetch_last_news():
+    url = 'http://podruga.top/rss'
+    articlelist = []
+
+    rss = urllib.request.urlopen(url).read()  
+    root = ET.fromstring(rss)
+
+    root = root[0]
+    for item in root.findall('item'):
+        desc = item.find('description').text
+        announce = desc.split('\n')[0].split('<')[0][:200] + "..."
+        title = item.find("title").text
+        date = datetime.strptime(" ".join(item.find("pubDate").text.split()[1:-1]), '%d %b %Y %H:%M:%S')
+        image_url = getImage(desc)
+        link = item.find("link").text
+
+
+        return (Article(title, announce, link, image_url, date))
+
 
 def send_message(recipient_id, message_text):
         Logger.log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
