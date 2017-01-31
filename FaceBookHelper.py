@@ -10,6 +10,7 @@ import urllib
 import xml.etree.ElementTree as ET
 from datetime import datetime
 
+from Article import Article
 
 
 def getImage(desc):
