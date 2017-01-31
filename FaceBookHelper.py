@@ -6,7 +6,7 @@ import Logger
 from db import db
 from flask import Flask, request
 from python_mysql_dbconfig import read_config
-
+import urllib
 
 
 time_string = "TIME"
