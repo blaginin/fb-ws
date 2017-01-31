@@ -68,7 +68,7 @@ class db:
             self.conn.commit()
 
 
-        except Error as error:
+        except BaseException as error:
             Logger.log(error)
 
     def createuser(self, fb_ID, FirstName = None, LastName = None, TimeZone = 3, LanguageId = 1):
@@ -84,7 +84,7 @@ class db:
                 self.cursor.execute(query, args)
                 self.conn.commit()
 
-            except Error as error:
+            except BaseException as error:
                 Logger.log(error)
         return TimeZone
 
