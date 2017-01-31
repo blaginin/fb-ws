@@ -27,7 +27,7 @@ def getImage(desc):
 
     return image_url
 
-    
+
 time_string = "TIME"
 PAGE_ACCESS_TOKEN = read_config(section="facebook")["page_access_token"]
 
@@ -91,6 +91,11 @@ def webhook_handler():
                         bot_db = db()
                         bot_db.createupdatesub(fb_ID=sender_id,subtype=1, hour=0, enable=0)
                         send_message(sender_id, "Подписка отменена :( Возвращайтесь")
+
+                    elif command == "DEVELOPER_DEFINED_ABOUT":
+
+                        send_message(sender_id, "Я - бот. Умею каждый день присылать гороскоп и актуальные новости. Давай общаться ;)")
+
 
 
                     elif command.upper().find(time_string) == 0:
