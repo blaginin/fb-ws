@@ -17,7 +17,7 @@ class db:
             # self.conn = mysql.connector.connect(**db)
             self.cursor = self.conn.cursor()
 
-        except Error as e:
+        except BaseException as e:
             print(e)
 
 

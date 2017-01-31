@@ -14,7 +14,6 @@ PAGE_ACCESS_TOKEN = read_config(section="facebook")["page_access_token"]
 
 def webhook_handler():
     data = request.get_json()
-    print("@@@", data)
     #Logger.log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     if data["object"] == "page":
