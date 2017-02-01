@@ -28,7 +28,7 @@ class db:
                 hour = datetime.now().hour
 
             if hour == 'any':
-                query  = "SELECT UserID FROM Subscritions where enabled=1"
+                query  = "SELECT UserID FROM Subscritions where enabled=1 "
 
             else:
                 datetimetocompare = time = datetime(2000,1,1,hour,0,0)
@@ -45,33 +45,31 @@ class db:
 
     def createupdatesub(self,fb_ID, subtype, hour, enable):
 
-        query  =  "SELECT * FROM Subscritions where UserID ="+fb_ID + " and SubTypeID=" + str(subtype)
+        query  =  "SELECT * FROM Subscritions where UserID ="+str(fb_ID) + " and SubTypeID=" + str(subtype)
         self.cursor.execute(query)
         row = self.cursor.fetchone()
 
-        time = datetime(2000,1,1,hour,0,0)
+        time = datetime(2000,1,1,hour,0,0).strftime('%Y-%m-%d %H:%M:%S')
 
         if self.cursor.rowcount > 0:
             row_id = row[0]
             query = """ UPDATE Subscritions
-                           SET SubTime = %s,
-                               Enabled = %s
-                           WHERE id = %s """
+                           SET SubTime = '{0}',
+                               Enabled = {1}
+                           WHERE id = {2} """.format(time, enable, row_id )
 
-            args = (time, enable, row_id )
 
 
         else:
-            query = "INSERT INTO Subscritions (UserID,SubTypeID,SubTime) VALUES( %s, 1, %s)"
-            args = (fb_ID, time)
+            query = "INSERT INTO Subscritions (UserID,SubTypeID,SubTime) VALUES( {0}, 1, '{1}')".format(fb_ID, time)
 
         try:
-
-            self.cursor.execute(query, args)
+            print('QU', query)
+            self.cursor.execute(query)
             self.conn.commit()
 
 
-        except BaseException as error:
+        except IndexError as error:
             Logger.log(error)
 
     def createuser(self, fb_ID, FirstName = None, LastName = None, TimeZone = 3, LanguageId = 1):
@@ -80,15 +78,15 @@ class db:
         self.cursor.fetchone()
 
         if self.cursor.rowcount <= 0:
-            query = "INSERT INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( %s, %s, %s, %s, %s)"
-            args = (fb_ID, FirstName, LastName, TimeZone, LanguageId )
+            query = "INSERT INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( {0}, {1}, {2}, {3}, {4})".format(fb_ID, FirstName, LastName, TimeZone, LanguageId)
             try:
 
-                self.cursor.execute(query, args)
+                self.cursor.execute(query)
                 self.conn.commit()
 
             except BaseException as error:
                 Logger.log(error)
+
         return TimeZone
 
     def testconn(self):
