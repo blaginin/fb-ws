@@ -22,15 +22,18 @@ class db:
 
 
 
-    def getsubs(self, typeid):
+    def getsubs(self, typeid, hour=None):
 
+            if hour is None:
+                hour = datetime.now().hour
 
-            hour = datetime.now().hour
+            if hour == 'any':
+                query  = "SELECT UserID FROM Subscritions where enabled=1"
 
-            datetimetocompare = time = datetime(2000,1,1,hour,0,0)
-
-            query  = "SELECT UserID FROM Subscritions where enabled=1 and SubTime ='" + datetimetocompare.strftime('%Y-%m-%d %H:%M:%S') +"' and SubTypeId = " + str(typeid)
-
+            else:
+                datetimetocompare = time = datetime(2000,1,1,hour,0,0)
+                query  = "SELECT UserID FROM Subscritions where enabled=1 and SubTime ='" + datetimetocompare.strftime('%Y-%m-%d %H:%M:%S') +"' and SubTypeId = " + str(typeid)
+            
             self.cursor.execute(query)
             rows = self.cursor.fetchall()
 
