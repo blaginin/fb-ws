@@ -21,6 +21,7 @@ def spamsample():
         Logger.log(len(article_list))
 
         person_id_list = bot_db.getsubs(i, hour='any')
+        print("+ person_id_list", person_id_list)
 
         for person_id in person_id_list:
             for article in article_list:
