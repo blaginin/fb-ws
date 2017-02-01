@@ -17,7 +17,7 @@ class db:
             # self.conn = mysql.connector.connect(**db)
             self.cursor = self.conn.cursor()
 
-        except BaseException as e:
+        except IndexError as e:
             print(e)
 
 
@@ -76,15 +76,16 @@ class db:
 
         self.cursor.execute("SELECT * FROM users where ID =" + fb_ID)
         self.cursor.fetchone()
+        FirstName, LastName, TimeZone, LanguageId, map(str, (FirstName, LastName, TimeZone, LanguageId))
 
         if self.cursor.rowcount <= 0:
-            query = "INSERT INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( {0}, {1}, {2}, {3}, {4})".format(fb_ID, FirstName, LastName, TimeZone, LanguageId)
+            query = "INSERT INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( {0}, '{1}', '{2}', {3}, {4})".format(fb_ID, FirstName, LastName, TimeZone, LanguageId)
             try:
-
+                print('QU', query)
                 self.cursor.execute(query)
                 self.conn.commit()
 
-            except BaseException as error:
+            except IndexError as error:
                 Logger.log(error)
 
         return TimeZone
