@@ -11,7 +11,6 @@ class db:
 
     def __init__(self):
         try:
-
             db = read_config()
             self.conn = sqlite3.connect('database.sqlite')
             # self.conn = mysql.connector.connect(**db)
@@ -25,7 +24,7 @@ class db:
     def getsubs(self, typeid, hour=None):
 
             if hour is None:
-                hour = datetime.now().hour
+                hour = datetime.utcnow().hour + 3 #MSK
 
             if hour == 'any':
                 query  = "SELECT UserID FROM Subscritions where enabled=1 "
