@@ -22,8 +22,8 @@ class db:
 
 
     def getsubs(self, typeid, hour=None):
-
-            if hour is None:
+            print('getsubs', hour)
+            if hour is None:    
                 hour = datetime.utcnow().hour + 3 #MSK
 
             if hour == 'any':
@@ -33,6 +33,7 @@ class db:
                 datetimetocompare = time = datetime(2000,1,1,hour,0,0)
                 query  = "SELECT UserID FROM Subscritions where enabled=1 and SubTime ='" + datetimetocompare.strftime('%Y-%m-%d %H:%M:%S') +"' and SubTypeId = " + str(typeid)
             
+
             self.cursor.execute(query)
             rows = self.cursor.fetchall()
 

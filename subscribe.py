@@ -17,10 +17,10 @@ logging.basicConfig()
   #MySpamMethods.spamsample()
   #sys.stdout.flush()
 
-@sched.scheduled_job('cron', hour='*', )
+@sched.scheduled_job('cron', minute='*', )
 def scheduled_job():
    print('This job is run every hour')
-   #MySpamMethods.spamsample()
+   MySpamMethods.spamsample()
    sys.stdout.flush()
 
 if __name__ == '__main__':
