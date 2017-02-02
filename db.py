@@ -22,6 +22,7 @@ class db:
 
 
     def getsubs(self, typeid, hour=None):
+            self.__init__()
             print('getsubs', hour)
             if hour is None:    
                 hour = (datetime.utcnow().hour + 3)%24 #MSK
