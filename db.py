@@ -24,7 +24,7 @@ class db:
     def getsubs(self, typeid, hour=None):
             print('getsubs', hour)
             if hour is None:    
-                hour = datetime.utcnow().hour + 3 #MSK
+                hour = (datetime.utcnow().hour + 3)%24 #MSK
 
             if hour == 'any':
                 query  = "SELECT UserID FROM Subscritions where enabled=1 "
