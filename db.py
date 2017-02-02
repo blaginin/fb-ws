@@ -80,7 +80,7 @@ class db:
         FirstName, LastName, TimeZone, LanguageId, map(str, (FirstName, LastName, TimeZone, LanguageId))
 
         if self.cursor.rowcount <= 0:
-            query = "INSERT INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( {0}, '{1}', '{2}', {3}, {4})".format(fb_ID, FirstName, LastName, TimeZone, LanguageId)
+            query = "REPLACE INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( {0}, '{1}', '{2}', {3}, {4})".format(fb_ID, FirstName, LastName, TimeZone, LanguageId)
             try:
                 print('QU', query)
                 self.cursor.execute(query)
