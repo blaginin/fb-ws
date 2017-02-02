@@ -66,11 +66,12 @@ class db:
         try:
             print('QU', query)
             self.cursor.execute(query)
-            self.conn.commit()
-
-
         except IndexError as error:
             Logger.log(error)
+
+        
+        self.conn.commit()
+
 
     def createuser(self, fb_ID, FirstName = None, LastName = None, TimeZone = 3, LanguageId = 1):
 
@@ -83,10 +84,11 @@ class db:
             try:
                 print('QU', query)
                 self.cursor.execute(query)
-                self.conn.commit()
-
             except IndexError as error:
                 Logger.log(error)
+
+            
+            self.conn.commit()
 
         return TimeZone
 
