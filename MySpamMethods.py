@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 
 
 def spamsample():
-    bot_db = db()
+        
     subtypes_list = [1]
     for i in subtypes_list:
         article_list = getarticles('http://podruga.top/rss')
@@ -35,7 +35,7 @@ def getarticles(url):
         for category in item.findall('category'):
             if 'ЗНАК ЗОДИАКА' in category.text.upper() or "ГОРОСКОП" in category.text.upper():
                 date = datetime.strptime(" ".join(item.find("pubDate").text.split()[1:-1]), '%d %b %Y %H:%M:%S')
-                if date.date() == datetime.now().date() or True: 
+                if date.date() == datetime.now().date() : 
                     desc = item.find('description').text
                     announce = desc.split('\n')[0].split('<')[0][:200] + "..."
                     title = item.find("title").text
@@ -43,6 +43,7 @@ def getarticles(url):
                     link = item.find("link").text
                     articlelist.append(Article(title, announce, link, image_url, date))
                 break
+                
     return articlelist
 
 
