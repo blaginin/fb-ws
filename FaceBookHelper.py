@@ -71,9 +71,9 @@ def webhook_handler():
 
                         ):
                             common_main_menu(sender_id)
-                        elif 'ВРЕМ' in message_text:
+                        elif 'ВРЕМ' in message_text.upper():
                             asktime(sender_id)
-                            
+
                         else:
                             send_message(sender_id, "Спасибо за отзыв :)")
                         # send_image(sender_id, "http://xiostorage.com/wp-content/uploads/2015/10/test.png")
@@ -113,7 +113,7 @@ def webhook_handler():
                     elif command.upper().find(time_string) == 0:
                         bot_db = db()
                         utc = bot_db.createuser(sender_id)
-                        hours = int(command.split(';')[1]) - utc
+                        hours = int(command.split(';')[1])
                         bot_db.createupdatesub(fb_ID=sender_id,subtype=1, hour=hours, enable=1)
                         #.createupdatesub()
                         send_message(sender_id, "Ура! :) Подписка оформлена")
