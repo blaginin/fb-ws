@@ -14,7 +14,7 @@ def spamsample():
     for i in subtypes_list:
         article_list = getarticles('http://podruga.top/rss')
         Logger.log(len(article_list))
-        person_id_list = bot_db.getsubs(i)
+        person_id_list = list(set(bot_db.getsubs(i)))
 
         print("+ person_id_list", person_id_list)
         for person_id in person_id_list:
