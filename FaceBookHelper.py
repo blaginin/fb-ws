@@ -75,7 +75,7 @@ def webhook_handler():
                             asktime(sender_id)
 
                         else:
-                            send_message(sender_id, "Спасибо за отзыв :)")
+                            send_message(sender_id, "Что? Для настройки подписки пиши `гороскоп`. Настройки доступны в меню.")
                         # send_image(sender_id, "http://xiostorage.com/wp-content/uploads/2015/10/test.png")
                     except Exception as e:
                         #common_main_menu(sender_id)
@@ -221,11 +221,11 @@ def common_main_menu(recipient_id):
                                     #"image_url": "https://petersfancybrownhats.com/company_image.png",
                                     "subtitle": "в удобное тебе время и скоро научусь еще многому. Напиши, чем бы еще я могла быть тебе полезна",
                                     "buttons": [
-                                        {
-                                            "type": "web_url",
-                                            "url": "http://podruga.top",
-                                            "title": "О нас"
-                                        },
+                                        # {
+                                        #     "type": "web_url",
+                                        #     "url": "http://podruga.top",
+                                        #     "title": "О нас"
+                                        # },
                                         {
                                             "type": "postback",
                                             "title": "Отписаться",
@@ -255,11 +255,11 @@ def common_main_menu(recipient_id):
                                     # "image_url": "https://petersfancybrownhats.com/company_image.png",
                                     "subtitle": "в удобное тебе время и скоро научусь еще многому. Напиши, чем бы еще я могла быть тебе полезна",
                                     "buttons": [
-                                        {
-                                            "type": "web_url",
-                                            "url": "http://podruga.top",
-                                            "title": "О нас"
-                                        },
+                                        # {
+                                        #     "type": "web_url",
+                                        #     "url": "http://podruga.top",
+                                        #     "title": "О нас"
+                                        # },
                                         {
                                             "type": "postback",
                                             "title": "Подписаться",

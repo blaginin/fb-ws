@@ -37,7 +37,7 @@ def getarticles(url):
                 date = datetime.strptime(" ".join(item.find("pubDate").text.split()[1:-1]), '%d %b %Y %H:%M:%S')
                 if date.date() == datetime.now().date() : 
                     desc = item.find('description').text
-                    announce = desc.split('\n')[0].split('<')[0][:200] + "..."
+                    announce = desc.replace('\n', ' ')[:200] + "..."
                     title = item.find("title").text
                     image_url = getImage(desc)
                     link = item.find("link").text
