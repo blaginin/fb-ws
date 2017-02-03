@@ -31,6 +31,15 @@ def getImage(desc):
 time_string = "TIME"
 PAGE_ACCESS_TOKEN = read_config(section="facebook")["page_access_token"]
 
+def asktime(user):
+    qr = [{"content_type":"text",
+        "title":str(i),
+        "payload":"SET_TIME_"+str(i)}
+
+        for i in range(0, 24)
+    ]
+    send_message(user, "Укажи, сколько сейчас часов в месте, где ты находишься. Я определю твой часовой пояс и буду присылать гороскопы вовремя ;)", additional={"quick_replies":qr})
+
 def webhook_handler():
     data = request.get_json()
     #Logger.log(data)  # you may not want to log every incoming message in production, but it's good for testing
@@ -62,6 +71,9 @@ def webhook_handler():
 
                         ):
                             common_main_menu(sender_id)
+                        elif 'ВРЕМ' in message_text:
+                            asktime(sender_id)
+                            
                         else:
                             send_message(sender_id, "Спасибо за отзыв :)")
                         # send_image(sender_id, "http://xiostorage.com/wp-content/uploads/2015/10/test.png")
@@ -131,7 +143,7 @@ def fetch_last_news():
         return (Article(title, announce, link, image_url, date))
 
 
-def send_message(recipient_id, message_text):
+def send_message(recipient_id, message_text, additional={}):
         Logger.log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
         params = {
@@ -140,14 +152,21 @@ def send_message(recipient_id, message_text):
         headers = {
             "Content-Type": "application/json"
         }
-        data = json.dumps({
+        toj = {
             "recipient": {
                 "id": recipient_id
             },
             "message": {
                 "text": message_text
             }
-        })
+        }
+
+        if 'quick_replies' in additional.keys():
+            toj['message']['quick_replies'] = additional['quick_replies']
+
+        data = json.dumps(toj)
+
+
         send_json(data, headers, params)
 
 def send_image(recipient_id, picture_url):
