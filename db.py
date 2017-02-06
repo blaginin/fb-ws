@@ -7,6 +7,21 @@ import Logger
 from python_mysql_dbconfig import read_config
 # from user import user
 
+
+def process_sql(st):
+	DELETE = '`', "'", '"', 'select', 'delete', 'where'
+	stu = st.upper()
+	for row in DELETE:
+		row = row.upper()
+		q = None
+		try:
+			q = stu.index(row)
+			print('!', q)
+			st = st[:q] + '*'*len(row) + st[q+len(row):]
+		except ValueError:
+			pass
+	return st
+
 class db:
 
     def __init__(self):
@@ -46,7 +61,7 @@ class db:
 
     def createupdatesub(self,fb_ID, subtype, hour, enable):
 
-        query  =  "SELECT * FROM Subscritions where UserID ="+str(fb_ID) + " and SubTypeID=" + str(subtype)
+        query  =  "SELECT * FROM Subscritions where UserID ="+str(process_sql(fb_ID)) + " and SubTypeID=" + str(subtype)
         self.cursor.execute(query)
         row = self.cursor.fetchone()
 
@@ -78,7 +93,7 @@ class db:
 
         self.cursor.execute("SELECT * FROM users where ID =" + fb_ID)
         self.cursor.fetchone()
-        FirstName, LastName, TimeZone, LanguageId, map(str, (FirstName, LastName, TimeZone, LanguageId))
+        FirstName, LastName, TimeZone, LanguageId, map(process_sql, map(str, (FirstName, LastName, TimeZone, LanguageId)))
 
         if self.cursor.rowcount <= 0:
             query = "REPLACE INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( {0}, '{1}', '{2}', {3}, {4})".format(fb_ID, FirstName, LastName, TimeZone, LanguageId)
