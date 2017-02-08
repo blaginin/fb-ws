@@ -67,17 +67,8 @@ class db:
 
         time = datetime(2000,1,1,hour,0,0).strftime('%Y-%m-%d %H:%M:%S')
 
-        if self.cursor.rowcount > 0:
-            row_id = row[0]
-            query = """ UPDATE Subscritions
-                           SET SubTime = '{0}',
-                               Enabled = {1}
-                           WHERE id = {2} """.format(time, enable, row_id )
 
-
-
-        else:
-            query = "INSERT INTO Subscritions (UserID,SubTypeID,SubTime) VALUES( {0}, 1, '{1}')".format(fb_ID, time)
+        query = "INSERT or REPLACE INTO Subscritions (UserID,SubTypeID,SubTime,Enabled) VALUES( {0}, 1, '{1}', {2})".format(fb_ID, time, enable)
 
         try:
             print('QU', query)
