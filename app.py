@@ -3,10 +3,14 @@ import os
 from flask import Flask, request
 from python_mysql_dbconfig import read_config
 import FaceBookHelper
-
+from status import status 
 app = Flask(__name__)
 
 
+
+@app.route('/status', methods=['GET'])
+def w_status():
+    return status()
 
 @app.route('/', methods=['GET'])
 def verify():
@@ -27,6 +31,11 @@ def webhook():
     # endpoint for processing incoming messaging events
     FaceBookHelper.webhook_handler()
     return "ok", 200
+
+
+
+
+
 
 if __name__ == '__main__':
     #l = read_config(section="facebook")["verify_token"]
