@@ -9,18 +9,18 @@ from python_mysql_dbconfig import read_config
 
 
 def process_sql(st):
-	DELETE = '`', "'", '"', 'select', 'delete', 'where'
-	stu = st.upper()
-	for row in DELETE:
-		row = row.upper()
-		q = None
-		try:
-			q = stu.index(row)
-			print('!', q)
-			st = st[:q] + '*'*len(row) + st[q+len(row):]
-		except ValueError:
-			pass
-	return st
+    DELETE = '`', "'", '"', 'select', 'delete', 'where'
+    stu = st.upper()
+    for row in DELETE:
+        row = row.upper()
+        q = None
+        try:
+            q = stu.index(row)
+            print('!', q)
+            st = st[:q] + '*'*len(row) + st[q+len(row):]
+        except ValueError:
+            pass
+    return st
 
 class db:
 
@@ -67,8 +67,17 @@ class db:
 
         time = datetime(2000,1,1,hour,0,0).strftime('%Y-%m-%d %H:%M:%S')
 
+        if row is not None:
+            row_id = row[0]
+            query = """ UPDATE Subscritions
+                           SET SubTime = '{0}',
+                               Enabled = {1}
+                           WHERE id = {2} """.format(time, enable, row_id )
 
-        query = "INSERT or REPLACE INTO Subscritions (UserID,SubTypeID,SubTime,Enabled) VALUES( {0}, 1, '{1}', {2})".format(fb_ID, time, enable)
+
+
+        else:
+            query = "INSERT INTO Subscritions (UserID,SubTypeID,SubTime) VALUES( {0}, 1, '{1}')".format(fb_ID, time)
 
         try:
             print('QU', query)
