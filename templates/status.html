@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<title>Bot status</title>
+</head>
+<body>
+	<div class="jumbotron" style="text-align: center;">
+        <h1 class="display-3">Состояние бота</h1>
+        <p class="lead">Системное время генерации отчета: <b>{{time}}</b></p>
+
+        <p><a class="btn btn-primary btn-sm" href="/status" role="button">Обновить</a></p>
+
+
+      </div>
+
+      <div style="width: 500px; margin-left: auto; margin-right: auto;">
+
+      {% for bot in bots %}
+
+      <div class="card">
+		  <div class="card-header">
+		    {{bot.header}}
+		  </div>
+		  <div class="card-block">
+		   	<h4 class="card-title" style="margin-bottom: 20px;">Сводка</h4> 
+
+		    <ul class="list-group">
+		    {% for key, val in bot.data.items() %}
+			  <li class="list-group-item justify-content-between">
+			    {{key}}
+			    <span class="badge badge-default badge-pill">{{val}}</span>
+			  </li>
+      		{% endfor %}
+			</ul>
+
+			<br>
+		    <a href="{{bot.url}}" class="btn btn-primary">Открыть диалог с ботом</a>
+		  </div>
+		</div>
+
+		<br>
+      {% endfor %}
+
+
+
+		</div>
+
+</body>

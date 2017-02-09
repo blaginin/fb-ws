@@ -33,7 +33,7 @@ def getarticles(url):
     root = root[0]
     for item in root.findall('item'):
         for category in item.findall('category'):
-            if 'ЗНАК ЗОДИАКА' in category.text.upper() or "ГОРОСКОП" in category.text.upper():
+            if "ЕДНЕВНЫЙ ГОРОСКОП" in category.text.upper():
                 date = datetime.strptime(" ".join(item.find("pubDate").text.split()[1:-1]), '%d %b %Y %H:%M:%S')
                 if date.date() == datetime.now().date() : 
                     desc = item.find('description').text
