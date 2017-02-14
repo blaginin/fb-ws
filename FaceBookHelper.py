@@ -333,7 +333,7 @@ def subscribe_menu(recipient_id):
 def subscribe_time_menu(recipient_id, sub_type):
         #Logger.log("subscribe_menu start")
 
-        send_message(recipient_id, "Для того, чтобы каждый день получать гороскоп, тебе нужно подписаться. Это быстро и бесплатно. Я буду отправлять новости в этот диалог.")
+        send_message(recipient_id, "Для того, чтобы каждый день получать гороскоп, тебе нужно подписаться. Я буду отправлять новости в этот диалог.")
 
 
 
