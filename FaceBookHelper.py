@@ -52,6 +52,7 @@ def webhook_handler():
 
                 sender_id = messaging_event["sender"]["id"]  # the facebook ID of the person sending you the message
 
+
                 print('msg', messaging_event.get("message"), messaging_event.get("postback"), messaging_event.get("postback"))
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
                     command = messaging_event["postback"]["payload"].strip()
@@ -331,6 +332,10 @@ def subscribe_menu(recipient_id):
 
 def subscribe_time_menu(recipient_id, sub_type):
         #Logger.log("subscribe_menu start")
+
+        send_message(recipient_id, "Для того, чтобы каждый день получать гороскоп, тебе нужно подписаться. Это быстро и бесплатно. Я буду отправлять новости в этот диалог.")
+
+
 
         params = {
             "access_token": PAGE_ACCESS_TOKEN
