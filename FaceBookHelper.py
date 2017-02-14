@@ -60,6 +60,8 @@ def webhook_handler():
                         if "text" in messaging_event["message"]:  # the message's text
                             message_text = messaging_event["message"]["text"]
                     # send_message(sender_id, "press the buttons")
+                        
+                        print('*', message_text)
                         if (
                               message_text.upper().find("START")>=0
                            or message_text.upper().find("HI")>=0
@@ -80,7 +82,7 @@ def webhook_handler():
                     except Exception as e:
                         #common_main_menu(sender_id)
                         send_message(sender_id, e.message)
-                        Logger.log(e.message)
+                        #Logger.log(e.message)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -89,8 +91,9 @@ def webhook_handler():
                     pass
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-
                     command = messaging_event["postback"]["payload"]
+                    print('\tpayload:', command)
+
                     if command == "DEVELOPER_DEFINED_SUBSCRIBE":
                         subscribe_time_menu(sender_id , '1')
 
@@ -144,7 +147,7 @@ def fetch_last_news():
 
 
 def send_message(recipient_id, message_text, additional={}):
-        Logger.log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
+        #Logger.log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
         params = {
             "access_token": PAGE_ACCESS_TOKEN
@@ -170,7 +173,7 @@ def send_message(recipient_id, message_text, additional={}):
         send_json(data, headers, params)
 
 def send_image(recipient_id, picture_url):
-        Logger.log("sending message to {recipient}: {url}".format(recipient=recipient_id, url=picture_url))
+        #Logger.log("sending message to {recipient}: {url}".format(recipient=recipient_id, url=picture_url))
 
         params = {
             "access_token": PAGE_ACCESS_TOKEN
@@ -276,7 +279,7 @@ def common_main_menu(recipient_id):
         send_json(data, headers, params)
 
 def subscribe_menu(recipient_id):
-        Logger.log("subscribe_menu start")
+        #Logger.log("subscribe_menu start")
 
         params = {
             "access_token": PAGE_ACCESS_TOKEN
@@ -321,7 +324,7 @@ def subscribe_menu(recipient_id):
         send_json(data, headers, params)
 
 def subscribe_time_menu(recipient_id, sub_type):
-        Logger.log("subscribe_menu start")
+        #Logger.log("subscribe_menu start")
 
         params = {
             "access_token": PAGE_ACCESS_TOKEN
@@ -373,12 +376,12 @@ def subscribe_time_menu(recipient_id, sub_type):
 def send_json(data, headers, params):
         r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
         if r.status_code != 200:
-            Logger.log(r.status_code)
+            #Logger.log(r.status_code)
             Logger.log(r.text)
 
 def send_articles_message(recipient_id, article):
 
-    Logger.log("sending articles to {recipient}".format(recipient=recipient_id))
+    #Logger.log("sending articles to {recipient}".format(recipient=recipient_id))
 
     params = {
         "access_token": PAGE_ACCESS_TOKEN

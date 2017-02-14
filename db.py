@@ -16,7 +16,7 @@ def process_sql(st):
         q = None
         try:
             q = stu.index(row)
-            print('!', q)
+            #print('!', q)
             st = st[:q] + '*'*len(row) + st[q+len(row):]
         except ValueError:
             pass
@@ -38,7 +38,7 @@ class db:
 
     def getsubs(self, typeid, hour=None):
             self.__init__()
-            print('getsubs', hour)
+        #  print('getsubs', hour)
             if hour is None:    
                 hour = (datetime.utcnow().hour + 3)%24 #MSK
 
@@ -80,7 +80,7 @@ class db:
             query = "INSERT INTO Subscritions (UserID,SubTypeID,SubTime) VALUES( {0}, 1, '{1}')".format(fb_ID, time)
 
         try:
-            print('QU', query)
+            #print('QU', query)
             self.cursor.execute(query)
         except IndexError as error:
             Logger.log(error)
@@ -98,7 +98,7 @@ class db:
         if self.cursor.rowcount <= 0:
             query = "REPLACE INTO users (ID, FirstName, LastName, TimeZone, LanguageID) VALUES( {0}, '{1}', '{2}', {3}, {4})".format(fb_ID, FirstName, LastName, TimeZone, LanguageId)
             try:
-                print('QU', query)
+                #print('QU', query)
                 self.cursor.execute(query)
             except IndexError as error:
                 Logger.log(error)
@@ -111,7 +111,7 @@ class db:
     def testconn(self):
         self.cursor.execute("SELECT * FROM users")
         row = self.cursor.fetchone()
-        print(row)
+        #print(row)
 
     def issub(self, fb_ID, subtype):
         query = "SELECT * FROM Subscritions where enabled=1 and UserID =" + fb_ID + " and SubTypeID=" + str(subtype)
