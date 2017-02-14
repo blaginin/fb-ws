@@ -52,18 +52,17 @@ def webhook_handler():
 
                 sender_id = messaging_event["sender"]["id"]  # the facebook ID of the person sending you the message
 
-
+                print('msg', messaging_event.get("message"), messaging_event.get("postback"), messaging_event.get("postback"))
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
                     command = messaging_event["postback"]["payload"].strip()
-                    print('\tpayload:', command, command=="DEVELOPER_DEFINED_LAST")
+                    # print('\tpayload:', command, command=="DEVELOPER_DEFINED_LAST")
 
                     if command == "DEVELOPER_DEFINED_SUBSCRIBE":
                         subscribe_time_menu(sender_id , '1')
 
                     elif command == "DEVELOPER_DEFINED_LAST":
-                        send_message(sender_id, "Вот последняя новость с сайта podruga.top")
+                        send_message(sender_id, "Вот последняя новость с сайта http://podruga.top")
                         art = fetch_last_news()
-                        print('art', art)
                         send_articles_message(sender_id, art)
 
 
@@ -109,8 +108,12 @@ def webhook_handler():
 
                         ):
                             common_main_menu(sender_id)
-                        elif 'ВРЕМ' in message_text.upper():
-                            asktime(sender_id)
+                        elif 'ПОСЛЕДН' in message_text.upper():
+                            send_message(sender_id, "Вот последняя новость с сайта http://podruga.top")
+                            art = fetch_last_news()
+                            send_articles_message(sender_id, art)
+
+
 
                         else:
                             send_message(sender_id, "Что? Для настройки подписки пиши `гороскоп`. Настройки доступны в меню.")
@@ -419,11 +422,12 @@ def send_articles_message(recipient_id, article):
               }
             },
           
-
-          "quick_replies":[{\
-                "content_type":"text",
-                "title":"Последняя новость",
-                "payload":"DEVELOPER_DEFINED_LAST"}]
+            "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Последняя новость",
+        "payload":"DEVELOPER_DEFINED_LAST"
+      },]
 
 
         }
