@@ -61,7 +61,10 @@ def webhook_handler():
                         subscribe_time_menu(sender_id , '1')
 
                     elif command == "DEVELOPER_DEFINED_LAST":
-                        send_articles_message(sender_id, fetch_last_news())
+                        send_message(sender_id, "Вот последняя новость с сайта podruga.top")
+                        art = fetch_last_news()
+                        print('art', art)
+                        send_articles_message(sender_id, art)
 
 
                     elif command == "DEVELOPER_DEFINED_UNSUBSCRIBE":
