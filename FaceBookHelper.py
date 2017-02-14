@@ -389,7 +389,7 @@ def send_articles_message(recipient_id, article):
     data = json.dumps({
         "recipient":{
             "id": recipient_id
-  },
+            },
           "message":{
             "attachment":{
               "type":"template",
@@ -412,7 +412,7 @@ def send_articles_message(recipient_id, article):
                 ]
               }
             }
-          }
+          },
 
           "quick_replies":[{\
                 "content_type":"text",
