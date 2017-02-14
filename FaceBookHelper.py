@@ -54,8 +54,8 @@ def webhook_handler():
 
 
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    command = messaging_event["postback"]["payload"]
-                    print('\tpayload:', command)
+                    command = messaging_event["postback"]["payload"].strip()
+                    print('\tpayload:', command, command=="DEVELOPER_DEFINED_LAST")
 
                     if command == "DEVELOPER_DEFINED_SUBSCRIBE":
                         subscribe_time_menu(sender_id , '1')
@@ -71,9 +71,7 @@ def webhook_handler():
                         send_message(sender_id, "Подписка отменена :( Возвращайтесь")
 
                     elif command == "DEVELOPER_DEFINED_ABOUT":
-
                         send_message(sender_id, "Я - бот. Умею каждый день присылать гороскоп и актуальные новости. Давай общаться ;)")
-
 
 
                     elif command.upper().find(time_string) == 0:
@@ -81,14 +79,13 @@ def webhook_handler():
                         utc = bot_db.createuser(sender_id)
                         hours = int(command.split(';')[1])
                         bot_db.createupdatesub(fb_ID=sender_id,subtype=1, hour=hours, enable=1)
-                        #.createupdatesub()
                         send_message(sender_id, "Ура! :) Подписка оформлена")
                     else:
                         send_message(sender_id, command)
 
 
-                        
-                if messaging_event.get("message"):  # someone sent us a message
+
+                elif messaging_event.get("message"):  # someone sent us a message
 
                     # recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     try:
