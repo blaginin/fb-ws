@@ -110,7 +110,7 @@ def webhook_handler():
                         ):
                             common_main_menu(sender_id)
                         elif 'НОВОС' in message_text.upper():
-                            send_message(sender_id, "Вот последняя новость с сайта http://podruga.top")
+                            # send_message(sender_id, "Вот последняя новость с сайта http://podruga.top")
                             art = fetch_last_news()
                             send_articles_message(sender_id, art)
 
