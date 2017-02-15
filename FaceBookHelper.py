@@ -430,7 +430,7 @@ def send_articles_message(recipient_id, article):
             "quick_replies":[
       {
         "content_type":"text",
-        "title":"Последняя новость",
+        "title":"Еще новости",
         "payload":"DEVELOPER_DEFINED_LAST"
       },]
 
