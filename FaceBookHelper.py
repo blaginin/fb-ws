@@ -87,7 +87,7 @@ def webhook_handler():
                         qr = {"quick_replies":[\
                           {
                             "content_type":"text",
-                            "title":"Читать последнюю новость",
+                            "title":"Читать новости",
                             "payload":"DEVELOPER_DEFINED_LAST"
                           },]}
 
