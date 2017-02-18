@@ -82,7 +82,16 @@ def webhook_handler():
                         utc = bot_db.createuser(sender_id)
                         hours = int(command.split(';')[1])
                         bot_db.createupdatesub(fb_ID=sender_id,subtype=1, hour=hours, enable=1)
-                        send_message(sender_id, "Ура! :) Подписка оформлена")
+
+
+                        qr = {"quick_replies":[\
+                          {
+                            "content_type":"text",
+                            "title":"Читать последнюю новость",
+                            "payload":"DEVELOPER_DEFINED_LAST"
+                          },]}
+
+                        send_message(sender_id, "Ура! :) Подписка оформлена. Гороскопы будут приходить в {0}:00".format(hours), additional=qr)
                     else:
                         send_message(sender_id, command)
 
