@@ -238,7 +238,7 @@ def common_main_menu(recipient_id):
                                     "title": "Привет, я могу присылать тебе Ежедневный гороскоп \"Шоколадное настроение\" ",
                                     #"item_url": "https://petersfancybrownhats.com",
                                     #"image_url": "https://petersfancybrownhats.com/company_image.png",
-                                    "subtitle": "в удобное тебе время и скоро научусь еще многому. Напиши, чем бы еще я могла быть тебе полезна",
+                                    "subtitle": "В удобное тебе время.",
                                     "buttons": [
                                         # {
                                         #     "type": "web_url",
@@ -272,7 +272,7 @@ def common_main_menu(recipient_id):
                                     "title": "Привет, я могу присылать тебе Ежедневный гороскоп \"Шоколадное настроение\" ",
                                     # "item_url": "https://petersfancybrownhats.com",
                                     # "image_url": "https://petersfancybrownhats.com/company_image.png",
-                                    "subtitle": "в удобное тебе время и скоро научусь еще многому. Напиши, чем бы еще я могла быть тебе полезна",
+                                    "subtitle": "Каждый день в удобное для тебя время.",
                                     "buttons": [
                                         # {
                                         #     "type": "web_url",
