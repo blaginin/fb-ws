@@ -393,7 +393,9 @@ def send_json(data, headers, params):
 def send_articles_message(recipient_id, article):
 
     #Logger.log("sending articles to {recipient}".format(recipient=recipient_id))
-    article.article_url+='?utm_medium=bot'
+    if not article.article_ur.endswith('?utm_medium=bot'):
+        article.article_url+='?utm_medium=bot'
+
     params = {
         "access_token": PAGE_ACCESS_TOKEN
     }
