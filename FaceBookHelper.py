@@ -53,10 +53,10 @@ def webhook_handler():
                 sender_id = messaging_event["sender"]["id"]  # the facebook ID of the person sending you the message
 
 
-                print('msg', messaging_event.get("message"), messaging_event.get("postback"), messaging_event.get("postback"))
+                #print('msg', messaging_event.get("message"), messaging_event.get("postback"), messaging_event.get("postback"))
                 if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
                     command = messaging_event["postback"]["payload"].strip()
-                    # print('\tpayload:', command, command=="DEVELOPER_DEFINED_LAST")
+                    # #print('\tpayload:', command, command=="DEVELOPER_DEFINED_LAST")
 
                     if command == "DEVELOPER_DEFINED_SUBSCRIBE":
                         subscribe_time_menu(sender_id , '1')
@@ -106,7 +106,7 @@ def webhook_handler():
                             message_text = messaging_event["message"]["text"]
                     # send_message(sender_id, "press the buttons")
                         
-                        print('*', message_text)
+                        #print('*', message_text)
                         if (
                               message_text.upper().find("START")>=0
                            or message_text.upper().find("HI")>=0
