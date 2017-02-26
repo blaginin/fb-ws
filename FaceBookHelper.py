@@ -186,7 +186,7 @@ def send_message(recipient_id, message_text, additional={}):
         data = json.dumps(toj)
 
 
-        send_json(data, headers, params)
+        return send_json(data, headers, params)
 
 def send_image(recipient_id, picture_url):
         #Logger.log("sending message to {recipient}: {url}".format(recipient=recipient_id, url=picture_url))
@@ -210,7 +210,7 @@ def send_image(recipient_id, picture_url):
                 }
             }
         })
-        send_json(data, headers, params)
+        return send_json(data, headers, params)
 
 def common_main_menu(recipient_id):
 
@@ -292,7 +292,7 @@ def common_main_menu(recipient_id):
                 }
             })
 
-        send_json(data, headers, params)
+        return send_json(data, headers, params)
 
 def subscribe_menu(recipient_id):
         #Logger.log("subscribe_menu start")
@@ -337,7 +337,7 @@ def subscribe_menu(recipient_id):
             }
         })
 
-        send_json(data, headers, params)
+        return send_json(data, headers, params)
 
 def subscribe_time_menu(recipient_id, sub_type):
         #Logger.log("subscribe_menu start")
@@ -391,13 +391,13 @@ def subscribe_time_menu(recipient_id, sub_type):
             }
         })
 
-        send_json(data, headers, params)
+        return send_json(data, headers, params)
 
 def send_json(data, headers, params):
         r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
         if r.status_code != 200:
-            #Logger.log(r.status_code)
             Logger.log(r.text)
+        return r
 
 def send_articles_message(recipient_id, article):
 
@@ -449,4 +449,4 @@ def send_articles_message(recipient_id, article):
         }
 
     })
-    send_json(data, headers, params)
+    return send_json(data, headers, params)

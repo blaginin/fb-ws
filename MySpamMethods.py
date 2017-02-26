@@ -8,6 +8,7 @@ import Logger
 import urllib
 import xml.etree.ElementTree as ET
 bot_db = db()
+import json 
 
 def spamsample():
     subtypes_list = [1]
@@ -15,11 +16,19 @@ def spamsample():
         article_list = getarticles('http://podruga.top/rss')
         Logger.log(len(article_list))
         person_id_list = list(set(bot_db.getsubs(i)))
-
         print("+ person_id_list", person_id_list)
         for person_id in person_id_list:
             for article in article_list:
-                FaceBookHelper.send_articles_message(person_id, article)
+                a = FaceBookHelper.send_articles_message(person_id, article)
+                print('RR', type(a), a)
+                if type(a) is bytes:
+                    a = a.decode('utf8')
+                if type(a) is str:
+                    a = json.loads(a)
+                if 'error' in a.keys():
+                    if a['error']['code'] == 200 and a['error']['error_subcode'] == 1545041:
+                        bot_db.createupdatesub(person_id, 1, 0, 0)
+                        print('[deleted]', person_id)
 
 
 
@@ -43,7 +52,6 @@ def getarticles(url):
                     link = item.find("link").text
                     articlelist.append(Article(title, announce, link, image_url, date))
                 break
-                
     return articlelist
 
 
