@@ -20,11 +20,8 @@ def spamsample():
         for person_id in person_id_list:
             for article in article_list:
                 a = FaceBookHelper.send_articles_message(person_id, article)
-                print('RR', type(a), a)
-                if type(a) is bytes:
-                    a = a.decode('utf8')
-                if type(a) is str:
-                    a = json.loads(a)
+                a = a.json()
+                                
                 if 'error' in a.keys():
                     if a['error']['code'] == 200 and a['error']['error_subcode'] == 1545041:
                         bot_db.createupdatesub(person_id, 1, 0, 0)
