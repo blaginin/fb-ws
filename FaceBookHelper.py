@@ -105,7 +105,7 @@ def webhook_handler():
                         if "text" in messaging_event["message"]:  # the message's text
                             message_text = messaging_event["message"]["text"]
                         
-                        Logger.log('[0]: {[0]}'.format(sender_id, message_text))
+                        Logger.log('[{0}]: `{1}`'.format(sender_id, message_text))
 
                         if (
                               message_text.upper().find("START")>=0
