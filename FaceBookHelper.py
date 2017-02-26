@@ -42,7 +42,7 @@ def asktime(user):
 
 def webhook_handler():
     data = request.get_json()
-    Logger.log(data)  # you may not want to log every incoming message in production, but it's good for testing
+    # Logger.log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     if data["object"] == "page":
 
@@ -104,9 +104,9 @@ def webhook_handler():
                         message_text = ''
                         if "text" in messaging_event["message"]:  # the message's text
                             message_text = messaging_event["message"]["text"]
-                    # send_message(sender_id, "press the buttons")
                         
-                        #print('*', message_text)
+                        Logger.log('[0]: {[0]}'.format(sender_id, message_text))
+
                         if (
                               message_text.upper().find("START")>=0
                            or message_text.upper().find("HI")>=0
@@ -126,6 +126,7 @@ def webhook_handler():
 
 
                         else:
+
                             send_message(sender_id, "Что? Для настройки подписки пиши `гороскоп`. Настройки доступны в меню.")
                         # send_image(sender_id, "http://xiostorage.com/wp-content/uploads/2015/10/test.png")
                     except Exception as e:
