@@ -60,10 +60,7 @@ class db:
             return fb_ids
 
     def createupdatesub(self,fb_ID, subtype, hour, enable):
-        fb_ID = str(fb_ID)
-        subtype = str(subtype)
-        hour = str(hour)
-        enable = str(enable)
+
 
         query  =  "SELECT * FROM Subscritions where UserID ="+str(process_sql(fb_ID)) + " and SubTypeID=" + str(subtype)
         self.cursor.execute(query)
